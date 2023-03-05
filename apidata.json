@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "createdAt": "2022-12-20T21:33:49.389Z",
+        "updatedAt": "2023-03-01T11:47:09.108Z",
+        "publishedAt": "2022-12-20T21:33:52.460Z",
+        "slug": "home-page",
+        "title": "Home page",
+        "meta_fields": {},
+        "banner": [
+          {
+            "id": 2,
+            "__component": "home-page.banner",
+            "banner_image_desk": {
+              "data": {
+                "id": 116,
+                "attributes": {
+                  "name": "Hero Section(2).png",
+                  "alternativeText": null,
+                  "caption": null,
+                  "width": 2160,
+                  "height": 975,
+                  "formats": {},
+                  "hash": "Hero_Section_2_2804ec65ae",
+                  "ext": ".png",
+                  "mime": "image/png",
+                  "size": 233.74,
+                  "url": "https://d3k12snvxvwdut.cloudfront.net/Hero_Section_2_2804ec65ae.png",
+                  "previewUrl": null,
+                  "provider": "s3-cloudfront",
+                  "provider_metadata": null,
+                  "createdAt": "2023-01-19T08:48:50.378Z",
+                  "updatedAt": "2023-01-19T08:48:50.378Z"
+                }
+              }
+            },
+            "banner_image_mob": {},
+            "banner_cta": {}
+          }
+        ],
+        "sectionTwo": [
+          {
+            "id": 4,
+            "__component": "home-page.section-two",
+            "title": "50",
+            "sub_text": "Of the world lacks access to dietary calcium causing malnutrition"
+          }
+        ],
+        "sectionThree": [],
+        "sectionFour": [],
+        "sectionFive": [],
+        "sectionSix": []
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 1
+    }
+  }
+}
