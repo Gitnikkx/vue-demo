@@ -1,21 +1,33 @@
 <template>
   <div style="margin: 100px">
-    <h1 style="text-align: center">Whats your calcium quotient ?</h1>
+    <h1 style="text-align: center">{{ data[0]?.title_text }}</h1>
     <div class="calgrid">
       <div class="cardDiv">
-        <img class="cardimg" src="../public/assets/diet.png" alt="diet" />
-        <p class="textCal">Daily Diet</p>
+        <img
+          class="cardimg"
+          :src="data[0]?.cards[0]?.image?.data?.attributes?.url"
+          alt="diet"
+        />
+        <p class="textCal">{{ data[0]?.cards[0]?.text }}</p>
       </div>
       <img class="symbolimg" src="../public/assets/equals.svg" />
       <div class="cardDiv">
-        <img class="cardimg" src="../public/assets/cal.png" alt="diet" />
-        <p class="textCal">Calcium Suppliments</p>
+        <img
+          class="cardimg"
+          :src="data[0]?.cards[1]?.image?.data?.attributes?.url"
+          alt="diet"
+        />
+        <p class="textCal">{{ data[0]?.cards[1]?.text }}</p>
       </div>
       <img class="symbolimg" src="../public/assets/equals.svg" />
       <div class="cardDiv">
-        <img class="cardimg" src="../public/assets/1000.png" alt="1000" />
+        <img
+          class="cardimg"
+          :src="data[0]?.cards[2]?.image?.data?.attributes?.url"
+          alt="1000"
+        />
         <p class="textCal">
-          Complete average calcium requirement for men and women
+          {{ data[0]?.cards[2]?.text }}
         </p>
       </div>
     </div>
@@ -24,14 +36,22 @@
       href="https://torrent-pharma.letschbang.com/calculator"
       target="_blank"
     >
-      <div class="testBtn"><p class="btnText">TAKE THE TEST</p></div></a
-    >
+      <div class="testBtn">
+        <p class="btnText">{{ data[0]?.cta?.cta_title }}</p>
+      </div>
+    </a>
   </div>
 </template>
 
 <script>
 export default {
   name: "CalciumS",
+  props: {
+    data: {
+      type: Array,
+      // required: true
+    },
+  },
 };
 </script>
 
@@ -39,26 +59,30 @@ export default {
 .a {
   text-decoration: none;
 }
+
 .calgrid {
   display: grid;
   grid-template-columns: auto 27px auto 27px auto;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 50px;
 }
+
 .cardimg {
   width: 300px;
   height: 300px;
   object-fit: contain;
 }
+
 .symbolimg {
   width: 27px;
   height: 27px;
   object-fit: cover;
 }
+
 .cardDiv {
-  background: cornsilk;
 }
+
 .textCal {
   font-weight: 700;
   line-height: 29px;
@@ -67,6 +91,7 @@ export default {
   max-width: 300px;
   text-align: center;
 }
+
 .testBtn {
   background: #121d64;
   width: fit-content;
@@ -75,6 +100,7 @@ export default {
   margin-top: 45px;
   cursor: pointer;
 }
+
 .btnText {
   color: white;
   font-weight: 900;

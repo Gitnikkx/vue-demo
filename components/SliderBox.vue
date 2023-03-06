@@ -1,11 +1,11 @@
 <template>
   <div class="continerBox">
     <div class="imgBox">
-      <img src="../public/assets/slider-img.png" width="400px" height="230px" />
+      <img v-bind:src="imgSrc" width="400px" height="230px" />
     </div>
-    <div style="margin-top: 24px">Calcium 101</div>
+    <div style="margin-top: 24px">{{ tag }}</div>
     <div style="margin-top: 8px">
-      <p class="sliderHeading">The Story of Your Bones: Calcium at Every Age</p>
+      <p class="sliderHeading">{{ heading }}</p>
     </div>
   </div>
 </template>
@@ -13,6 +13,17 @@
 <script>
 export default {
   name: "SliderBox",
+  props: {
+    tag: {
+      type: String,
+    },
+    heading: {
+      type: String,
+    },
+    imgSrc: {
+      type: String,
+    },
+  },
 };
 </script>
 

@@ -1,20 +1,23 @@
 <template>
   <div>
     <h1 style="text-align: center">
-      Choose Shelcal 500 to fulfill your calcium needs
+      {{ data[0]?.title_text?.text }}
     </h1>
     <div class="gridSection">
+
       <div class="textGrid">
-        <div v-for="item in list" :key="item.id">
-          <ContentBoxVue :srcImg="item.src" :title="item.text" />
+        <div v-for="item in data" :key="item.id">
+          <ContentBoxVue :srcImg="item.pointers[0].image.data.attributes.url" :title="item.pointers[0].text" />
+          <ContentBoxVue :srcImg="item.pointers[1].image.data.attributes.url" :title="item.pointers[1].text" />
         </div>
       </div>
 
-      <img class="imgCal" src="../public/assets/pill-cal.svg" />
+      <img class="imgCal" :src="data[0]?.section_image.media.data.attributes.url" />
 
       <div class="textGrid">
-        <div v-for="item in list2" :key="item.id">
-          <ContentBoxVue :srcImg="item.src" :title="item.text" />
+        <div v-for="item in data" :key="item.id">
+          <ContentBoxVue :srcImg="item.pointers[2].image.data.attributes.url" :title="item.pointers[2].text" />
+          <ContentBoxVue :srcImg="item.pointers[3].image.data.attributes.url" :title="item.pointers[3].text" />
         </div>
       </div>
     </div>
@@ -31,36 +34,10 @@ export default {
     ContentBoxVue,
   },
   props: {
-    list: {
+    data: {
       type: Array,
-      default: () => [
-        {
-          id: 0,
-          text: "Optimises Calcium absorption",
-          src: "https://picsum.photos/200",
-        },
-        {
-          id: 1,
-          text: "Improves muscle strength",
-          src: "https://picsum.photos/100",
-        },
-      ],
-    },
-    list2: {
-      type: Array,
-      default: () => [
-        {
-          id: 0,
-          text: "Helps in boosting immunity",
-          src: "https://picsum.photos/200",
-        },
-        {
-          id: 1,
-          text: "Increases bone density",
-          src: "https://picsum.photos/100",
-        },
-      ],
-    },
+       required: true,
+    }
   },
 };
 </script>
@@ -82,5 +59,6 @@ export default {
 .textGrid {
   display: grid;
   grid-template-areas: 1fr;
+  align-items: center;
 }
 </style>

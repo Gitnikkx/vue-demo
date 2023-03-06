@@ -13,15 +13,14 @@
     <div class="pill_section">
       <img src="../public/assets/pill.png" alt="pill" />
       <h2>
-        Of Indian women have Vitamin D and Calcium deficiency, leading to a
-        higher risk of osteoporosis
+        {{ pillData?.sub_text }}
       </h2>
     </div>
 
-    <CalciumSection />
-    <CalciumNeeds />
-    <DiscoverLivingSection />
-    <FAQVue/>
+    <CalciumSection :data="calciumSec" />
+    <CalciumNeeds :data="calciumNeed" />
+    <DiscoverLivingSection  :data="discoverLiv"/>
+    <FAQVue />
   </div>
 </template>
 
@@ -30,7 +29,7 @@ import Header from "../components/Header.vue";
 import CalciumSection from "../components/CalciumSection.vue";
 import CalciumNeeds from "../components/CalciumNeeds.vue";
 import DiscoverLivingSection from "../components/DiscoverLivingSection.vue";
-import FAQVue from '../components/FAQ.vue';
+import FAQVue from "../components/FAQ.vue";
 
 export default {
   name: "App",
@@ -46,6 +45,9 @@ export default {
       title: "My Blog",
       data: [],
       pillData: {},
+      calciumSec: [],
+      calciumNeed:[],
+      discoverLiv:[],
     };
   },
   async fetch() {
@@ -54,8 +56,11 @@ export default {
     );
     const posts = await response.json();
     const data = posts?.data[0]?.attributes?.banner;
-    const pillData = posts?.data[0]?.attributes?.sectionTwo[0];
-    //console.log(pillData?.sub_text);
+    this.pillData = posts?.data[0]?.attributes?.sectionTwo[0];
+    this.calciumSec = posts?.data[0]?.attributes?.sectionThree;
+    this.calciumNeed = posts?.data[0]?.attributes?.sectionFour;
+    this.discoverLiv = posts?.data[0]?.attributes?.sectionFive;
+   // console.log(this.discoverLiv[0]);
   },
 };
 </script>

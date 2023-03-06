@@ -12,21 +12,13 @@
       </div>
     </div>
 
-    <div >
+    <!-- <div>
       <div style="display: flex; justify-content: space-between">
         <div @click="toggleAnswer" style="cursor: pointer">
           <p class="p-text">Why should one take Shelcal</p>
         </div>
         <div style="width: fit-content" @click="toggleCross">
-          <img
-            :src="
-              showCross
-                ? '../public/assets/cross.png'
-                : '../public/assets/plus.png'
-            "
-            width="64px"
-            height="40px"
-          />
+          <img src="../public/assets/plus.png" width="64px" height="40px" />
         </div>
       </div>
       <div v-show="showAnswer">
@@ -39,13 +31,51 @@
           always have the option to select which care path you would prefer.
         </p>
       </div>
+    </div> -->
+    <div v-for="item in list" :key="item.id">
+      <FAQDiv :question="item.question" :answer="item.answer" />
     </div>
   </div>
 </template>
 
 <script>
+import FAQDiv from "./FAQDiv.vue";
 export default {
   name: "FAQSection",
+  components: {
+    FAQDiv,
+  },
+  props: {
+    list: {
+      type: Array,
+      default: () => [
+        {
+          id: 0,
+          question: " 1.) Why should one take Shelcal",
+          answer:
+            "The first step is to complete a comprehensive assessment that will seek to understand your current sleep quality and some of the other lifestyle and healthcare factors that might be relevant.From there, Deep will recommend a care path that will include either a behavioral program or a telemedicine visit with a sleep specialist. You will always have the option to select which care path you would prefer.",
+        },
+        {
+          id: 1,
+          question: " 2.) What is the recommended Shelcal 500 dosage?",
+          answer:
+            "The second step is to complete a comprehensive assessment that will seek to understand your current sleep quality and some of the other lifestyle and healthcare factors that might be relevant.From there, Deep will recommend a care path that will include either a behavioral program or a telemedicine visit with a sleep specialist. You will always have the option to select which care path you would prefer.",
+        },
+        {
+          id: 2,
+          question: " 3.) What are some uses of Shelcal 500 tablets?",
+          answer:
+            "The third step is to sleep or visit with a sleep specialist. You will always have the option to select which care path you would prefer.",
+        },
+        {
+          id: 3,
+          question: " 4.) Why should one take Shelcal",
+          answer:
+            "seek to understand your lifestyle and healthcare factors that might be relevant.From there, Deep will recommend a care path that will include either a behavioral program or a telemedicine visit with a sleep specialist. You will always have the option to select which care path you would prefer.",
+        },
+      ],
+    },
+  },
   data() {
     return {
       showAnswer: false,
